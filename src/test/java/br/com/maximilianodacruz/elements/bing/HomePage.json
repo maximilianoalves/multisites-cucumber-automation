@@ -1,0 +1,10 @@
+{
+  "fieldSearch": {
+    "type": "CSSSELECTOR",
+    "value": "input[name='q']"
+  },
+  "btnSearch": {
+    "type": "CSSSELECTOR",
+    "value": "label.search"
+  }
+}

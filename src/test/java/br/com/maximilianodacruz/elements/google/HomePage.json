@@ -1,0 +1,10 @@
+{
+  "fieldSearch": {
+    "type": "CSSSELECTOR",
+    "value": "input[class='gLFyf gsfi']"
+  },
+  "btnSearch": {
+    "type": "CSSSELECTOR",
+    "value": "div.FPdoLc > center > input[name='btnK']"
+  }
+}

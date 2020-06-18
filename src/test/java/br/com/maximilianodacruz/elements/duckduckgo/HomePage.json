@@ -1,0 +1,10 @@
+{
+  "fieldSearch": {
+    "type": "ID",
+    "value": "search_form_input_homepage"
+  },
+  "btnSearch": {
+    "type": "ID",
+    "value": "search_button_homepage"
+  }
+}
