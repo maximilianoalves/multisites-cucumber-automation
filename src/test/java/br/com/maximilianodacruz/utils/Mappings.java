@@ -8,6 +8,7 @@ import org.junit.Assert;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
 
 public class Mappings {
 
@@ -23,16 +24,8 @@ public class Mappings {
         return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getScreen() {
         return screen;
-    }
-
-    public void setScreen(String screen) {
-        this.screen = screen;
     }
 
     public JSONObject getJsonFile() {

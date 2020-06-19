@@ -2,6 +2,11 @@ package br.com.maximilianodacruz.utils;
 
 import org.junit.Assert;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Utils {
 
     public static String getBrand() {
@@ -16,23 +21,26 @@ public class Utils {
     }
 
     public static String getEnv() {
-        Brands env = Brands.valueOf(getBrand().toUpperCase());
-        String url = null;
-
-        switch (env) {
-            case GOOGLE:
-                url = "https://www.google.com.br";
-                break;
-            case BING:
-                url = "https://www.bing.com/?cc=br";
-                break;
-            case DUCKDUCKGO:
-                url = "https://duckduckgo.com/";
-                break;
-            default:
-                Assert.fail("Ambiente não existente: " + env);
-        }
-
-        return url;
+        return getConfigProperties().getProperty("URL");
     }
+
+    public static Properties getConfigProperties() {
+        StringBuilder pathProperties = new StringBuilder();
+        pathProperties.append(System.getProperty("user.dir"));
+        pathProperties.append("/src/test/java/br/com/maximilianodacruz/elements/");
+        pathProperties.append(Utils.getBrand().toLowerCase());
+        pathProperties.append("/config.properties");
+        Properties configProps = new Properties();
+
+        try {
+            configProps.load(new FileInputStream(pathProperties.toString()));
+        } catch (FileNotFoundException e) {
+            Assert.fail(e.getMessage());
+        } catch (IOException e) {
+            Assert.fail(e.getMessage());
+        }
+        return configProps;
+    }
+
+
 }

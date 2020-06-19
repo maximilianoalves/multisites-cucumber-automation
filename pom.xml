@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium-java.version>3.141.59</selenium-java.version>
         <lombok.version>1.18.6</lombok.version>
         <cucumber.version>6.1.1</cucumber.version>

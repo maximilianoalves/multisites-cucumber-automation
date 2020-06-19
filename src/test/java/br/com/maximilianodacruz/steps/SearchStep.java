@@ -26,12 +26,6 @@ public class SearchStep {
 
     @Então("devo validar um conteúdo relativo ao termo de busca")
     public void devo_validar_um_conteúdo_relativo_ao_termo_de_busca() throws Exception {
-        if (Utils.getBrand().equalsIgnoreCase("google")) {
-            assertEquals("Maximiliano Alves da Cruz - Pesquisa Google", resultSearchPage.getPageTitle());
-        } else if(Utils.getBrand().equalsIgnoreCase("bing")) {
-            assertEquals("Maximiliano Alves da Cruz - Bing", resultSearchPage.getPageTitle());
-        } else if(Utils.getBrand().equalsIgnoreCase("duckduckgo")) {
-            assertEquals("Maximiliano Alves da Cruz at DuckDuckGo", resultSearchPage.getPageTitle());
-        }
+        resultSearchPage.assertTitle();
     }
 }
