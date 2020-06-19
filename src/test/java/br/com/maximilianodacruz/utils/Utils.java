@@ -5,7 +5,14 @@ import org.junit.Assert;
 public class Utils {
 
     public static String getBrand() {
-        return System.getProperty("brand");
+        String brand = null;
+        if (System.getProperty("brand") != null) {
+            brand = System.getProperty("brand");
+        } else {
+            //brand = "GOOGLE";
+            Assert.fail("Brand não definido");
+        }
+        return brand ;
     }
 
     public static String getEnv() {

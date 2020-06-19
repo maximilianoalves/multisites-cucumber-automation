@@ -9,18 +9,13 @@ import org.openqa.selenium.WebElement;
 public class HomePage extends BasePage {
 
     Mappings mappings = new Mappings("HomePage");
-    WebElement fieldSearch;
-    WebElement btnSearch;
-
-    public HomePage() {
-        this.fieldSearch = element(FindTypes.valueOf(mappings.getType("fieldSearch")), mappings.getValue("fieldSearch"));
-        this.btnSearch = element(FindTypes.valueOf(mappings.getType("btnSearch")), mappings.getValue("btnSearch"));
-    }
+    WebElement fieldSearch = element(FindTypes.valueOf(mappings.getType("fieldSearch")), mappings.getValue("fieldSearch"));
+    WebElement btnSearch = element(FindTypes.valueOf(mappings.getType("btnSearch")), mappings.getValue("btnSearch"));
 
     public void inputSearch(String search) {
-        fillField(this.getFieldSearch(), search);
+        fillField(fieldSearch, search);
     }
     public void clickSearch() {
-        click(getBtnSearch());
+        click(btnSearch);
     }
 }
