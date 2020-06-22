@@ -19,4 +19,4 @@ jobs:
           chmod +x ./scripts/InstallChrome.sh
            ./scripts/InstallChrome.sh
       - name: Execute test
-        run: mvn test -Dbrand=GOOGLE
+        run: mvn clean test -Dbrand=GOOGLE
