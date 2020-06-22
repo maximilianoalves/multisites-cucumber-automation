@@ -1,22 +1,22 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Run Tests Selenium
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+name: Selenium Java CI
+on: [push]
 
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
-    name: Run Selenium test for GOOGLE.
+
     steps:
-    - name: Selenoid
-      uses: ajinx/selenoid@v2
-    - uses: actions/checkout@v2
-    - run: npm ci  
-    - name: Run Maven Test
-      run: mvn test -Dbrand=GOOGLE
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Install Google Chrome
+        run: |
+          chmod +x ./scripts/InstallChrome.sh
+           ./scripts/InstallChrome.sh
+      - name: Execute test
+        run: mvn test -Dbrand=GOOGLE
