@@ -20,6 +20,9 @@ public class Browser {
         if (driver == null) {
             try {
                 ChromeOptions capability = new ChromeOptions();
+                capability.addArguments("--no-sandbox");
+                capability.addArguments("--disable-dev-shm-usage");
+                capability.addArguments("--headless");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
                 wait = new WebDriverWait(driver, 30);
                 maximizeBrowser();
