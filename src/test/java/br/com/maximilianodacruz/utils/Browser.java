@@ -1,6 +1,8 @@
 package br.com.maximilianodacruz.utils;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
@@ -18,18 +20,15 @@ public class Browser {
 
     public static WebDriver getCurrentDriver() {
         if (driver == null) {
-            try {
-                ChromeOptions capability = new ChromeOptions();
-                capability.addArguments("--no-sandbox");
-                capability.addArguments("--disable-dev-shm-usage");
-                capability.addArguments("--headless");
-                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
-                wait = new WebDriverWait(driver, 30);
-                maximizeBrowser();
-                setPageLoadTimeout();
-            } catch (MalformedURLException e) {
-                System.out.println("Error: " + e.toString());
-            }
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions capability = new ChromeOptions();
+            capability.addArguments("--no-sandbox");
+            capability.addArguments("--disable-dev-shm-usage");
+            capability.addArguments("--headless");
+            driver = new ChromeDriver(capability);
+            wait = new WebDriverWait(driver, 30);
+            maximizeBrowser();
+            setPageLoadTimeout();
         }
         return driver;
     }
